@@ -3,7 +3,7 @@ FROM registry.fedoraproject.org/fedora:${TAG}
 
 RUN \ 
 dnf -y update && \
-dnf -y install git cmake zlib-devel zlib-static llvm-devel re2c bison gcc-c++ && \
+dnf -y install git cmake zlib-devel zlib-static llvm-devel re2c bison gcc-c++ python3 && \
 dnf clean all
 
 RUN useradd -m -G wheel -u 1001 user
