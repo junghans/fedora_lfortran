@@ -13,5 +13,5 @@ WORKDIR /home/user
 
 RUN git clone https://github.com/lfortran/lfortran
 WORKDIR lfortran
-RUN cmake -B build -DWITH_LLVM=on
+RUN cmake -B build -DWITH_LLVM=on -DLFORTRAN_BUILD_ALL=yes
 RUN cmake --build build
