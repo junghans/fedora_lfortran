@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker:
+    continue-on-error: true
+    strategy:
+      matrix:
+        tag: ['37', '38', 'rawhide']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out code
+        uses: actions/checkout@v2
+      - name: Build Docker images
+        uses: docker/build-push-action@v3        
+        with:
+          tags: lfortran/lfortran/fedora:${{ matrix.tag }}
+          file: Dockerfile 
+          build-args: TAG=${{ matrix.tag }} 
+          pull: true
+          push: false 
